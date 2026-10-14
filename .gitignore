@@ -1,0 +1,39 @@
+# Archivos compilados de Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Carpetas de salida
+bin/
+out/
+build/
+target/
+
+# Visual Studio Code
+.vscode/
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# NetBeans
+nbproject/
+nbbuild/
+nbdist/
+
+# Logs y temporales
+*.log
+*.tmp
+*.bak
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de prueba locales
+prueba.txt
