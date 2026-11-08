@@ -30,9 +30,9 @@ public class Main {
         Usuario sesion = null;
         boolean salir = false;
         while (!salir) {
-            System.out.println("\n=== BANCO === sesión: "
+            System.out.println("\n=== BANCO === sesion: "
                     + (sesion == null ? "(ninguna)" : sesion.getNombreUsuario()));
-            System.out.println("1. Iniciar sesión");
+            System.out.println("1. Iniciar sesion");
             System.out.println("2. Registrar usuario");
             System.out.println("3. Crear cuenta");
             System.out.println("4. Consultar saldo");
@@ -42,7 +42,7 @@ public class Main {
             System.out.println("8. Consultar historial");
             System.out.println("9. Consultar accesos");
             System.out.println("0. Salir");
-            System.out.print("Opción: ");
+            System.out.print("Opcion: ");
             switch (TECLADO.nextLine().trim()) {
                 case "1": sesion = iniciarSesion(auth); break;
                 case "2": registrarUsuario(auth); break;
@@ -54,10 +54,10 @@ public class Main {
                 case "8": consultarHistorial(banco, sesion); break;
                 case "9": consultarAccesos(auth, sesion); break;
                 case "0": salir = true; break;
-                default: System.out.println("Opción no válida, elige un número del menú.");
+                default: System.out.println("Opcion no válida, elige un número del menú.");
             }
         }
-        System.out.println("Sesión finalizada.");
+        System.out.println("Sesion finalizada.");
     }
 
     private static Usuario iniciarSesion(AutenticacionService auth) {
@@ -87,7 +87,7 @@ public class Main {
             auth.registrarUsuario(id, rol, nombre, contrasena);
             System.out.println("Usuario registrado: " + nombre);
         } catch (NumberFormatException e) {
-            System.out.println("Formato incorrecto: el id debe ser un número entero (ej. 6).");
+            System.out.println("Formato incorrecto: el id debe ser un número entero.");
         } catch (IllegalArgumentException e) {
             System.out.println("Datos rechazados: " + e.getMessage());
         }
@@ -107,16 +107,16 @@ public class Main {
             System.out.println("Cuenta creada: " + cuenta.getNumeroCuenta()
                     + " (" + cuenta.getClass().getSimpleName() + ")");
         } catch (NumberFormatException e) {
-            System.out.println("Formato incorrecto: usa números (tipo 1 o 2, saldo como 1000.00).");
+            System.out.println("Formato incorrecto.");
         } catch (IllegalArgumentException e) {
-            System.out.println("Operación rechazada: " + e.getMessage());
+            System.out.println("Operacion rechazada: " + e.getMessage());
         }
     }
 
     // Polimorfismo observable: la referencia es Cuenta (tipo base) y se llama
     // al mismo método en ambas subclases; cada implementación da un resultado distinto.
     private static void consultarSaldo(BancoService banco, Usuario sesion) {
-        System.out.print("Número de cuenta: ");
+        System.out.print("Numero de cuenta: ");
         String linea = TECLADO.nextLine();
         try {
             int numero = Integer.parseInt(linea.trim());
@@ -125,14 +125,14 @@ public class Main {
             System.out.printf("Cuenta %d (%s) | saldo: %.2f | disponible para retiro: %.2f%n",
                     numero, cuenta.getClass().getSimpleName(), saldo, cuenta.calcularSaldoDisponible());
         } catch (NumberFormatException e) {
-            System.out.println("Formato incorrecto: el número de cuenta es un entero (ej. 1).");
+            System.out.println("Formato incorrecto: el numero de cuenta debe ser un entero.");
         } catch (IllegalArgumentException | SecurityException e) {
-            System.out.println("Operación rechazada: " + e.getMessage());
+            System.out.println("Operacion rechazada: " + e.getMessage());
         }
     }
 
     private static void depositar(BancoService banco, Usuario sesion) {
-        System.out.print("Número de cuenta: ");
+        System.out.print("Numero de cuenta: ");
         String lineaCuenta = TECLADO.nextLine();
         System.out.print("Monto a depositar: ");
         String lineaMonto = TECLADO.nextLine();
@@ -140,16 +140,16 @@ public class Main {
             int numero = Integer.parseInt(lineaCuenta.trim());
             double monto = Double.parseDouble(lineaMonto.trim());
             banco.depositar(sesion, numero, monto);
-            System.out.println("Depósito realizado. Nuevo saldo: " + banco.consultarSaldo(sesion, numero));
+            System.out.println("Deposito realizado. Nuevo saldo: " + banco.consultarSaldo(sesion, numero));
         } catch (NumberFormatException e) {
-            System.out.println("Formato incorrecto: la cuenta es un entero y el monto un número (ej. 100.50).");
+            System.out.println("Formato incorrecto: la cuenta es un entero y el monto un número.");
         } catch (IllegalArgumentException | IllegalStateException | SecurityException e) {
             System.out.println("Operación rechazada: " + e.getMessage());
         }
     }
 
     private static void retirar(BancoService banco, Usuario sesion) {
-        System.out.print("Número de cuenta: ");
+        System.out.print("Numero de cuenta: ");
         String lineaCuenta = TECLADO.nextLine();
         System.out.print("Monto a retirar: ");
         String lineaMonto = TECLADO.nextLine();
@@ -160,7 +160,7 @@ public class Main {
             // Confirmación de éxito: solo se imprime si la operación se completó.
             System.out.println("Retiro realizado. Nuevo saldo: " + banco.consultarSaldo(sesion, numero));
         } catch (NumberFormatException e) {
-            System.out.println("Formato incorrecto: la cuenta es un entero y el monto un número (ej. 100.50).");
+            System.out.println("Formato incorrecto: la cuenta es un entero y el monto un número.");
         } catch (SaldoInsuficienteException e) {
             System.out.println("Operación rechazada: " + e.getMessage());
         } catch (IllegalArgumentException | IllegalStateException | SecurityException e) {
@@ -184,11 +184,11 @@ public class Main {
             banco.transferir(sesion, origen, destino, monto);
             System.out.println("Transferencia realizada.");
         } catch (NumberFormatException e) {
-            System.out.println("Formato incorrecto: las cuentas son enteros y el monto un número (ej. 100.50).");
+            System.out.println("Formato incorrecto: las cuentas son enteros y el monto un numero.");
         } catch (SaldoInsuficienteException e) {
-            System.out.println("Operación rechazada: " + e.getMessage());
+            System.out.println("Operacion rechazada: " + e.getMessage());
         } catch (IllegalArgumentException | IllegalStateException | SecurityException e) {
-            System.out.println("Operación rechazada: " + e.getMessage());
+            System.out.println("Operacion rechazada: " + e.getMessage());
         }
     }
 
@@ -200,7 +200,7 @@ public class Main {
             }
             System.out.println("Total: " + lista.size() + " transacciones");
         } catch (SecurityException e) {
-            System.out.println("Operación rechazada: " + e.getMessage());
+            System.out.println("Operacion rechazada: " + e.getMessage());
         }
     }
 
@@ -212,7 +212,7 @@ public class Main {
             }
             System.out.println("Total: " + lista.size() + " registros");
         } catch (SecurityException e) {
-            System.out.println("Operación rechazada: " + e.getMessage());
+            System.out.println("Operacion rechazada: " + e.getMessage());
         }
     }
 }
