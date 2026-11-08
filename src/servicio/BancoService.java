@@ -3,7 +3,10 @@ package servicio;
 import java.util.ArrayList;
 import java.util.List;
 
+import excepciones.SaldoInsuficienteException;
 import modelo.Cuenta;
+import modelo.CuentaAhorro;
+import modelo.CuentaCorriente;
 import modelo.Rol;
 import modelo.TipoCuenta;
 import modelo.TipoTransaccion;
@@ -21,10 +24,9 @@ public class BancoService {
         if (saldoInicial < 0) {
             throw new IllegalArgumentException("El saldo inicial no puede ser negativo");
         }
-        Cuenta cuenta;
-        do {
-            cuenta = new Cuenta(tipo, titular, saldoInicial); // se repite si el número aleatorio ya existe, Math.random()
-        } while (buscarCuenta(cuenta.getNumeroCuenta()) != null); // Asegura que el número de cuenta sea único
+        Cuenta cuenta = (tipo == TipoCuenta.AHORRO)
+                ? new CuentaAhorro(titular, saldoInicial)
+                : new CuentaCorriente(titular, saldoInicial);
         cuentas.add(cuenta);
         return cuenta;
     }
@@ -56,7 +58,7 @@ public class BancoService {
     }
 
     // metodo para retirar dinero de una cuenta, solo el titular o un cajero pueden hacerlo
-    public void retirar(Usuario solicitante, int numeroCuenta, double monto) {
+    public void retirar(Usuario solicitante, int numeroCuenta, double monto) throws SaldoInsuficienteException {
         Cuenta cuenta = obtenerCuenta(numeroCuenta);
         validarPermiso(solicitante, cuenta);
         cuenta.retirar(monto);
@@ -64,7 +66,8 @@ public class BancoService {
     }
 
     // metodo para transferir dinero entre cuentas, solo el titular de la cuenta origen o un cajero pueden hacerlo
-    public void transferir(Usuario solicitante, int numeroOrigen, int numeroDestino, double monto) {
+    public void transferir(Usuario solicitante, int numeroOrigen, int numeroDestino, double monto) throws SaldoInsuficienteException {
+
         if (numeroOrigen == numeroDestino) {
             throw new IllegalArgumentException("La cuenta origen y destino deben ser distintas");
         }
