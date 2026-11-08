@@ -68,7 +68,7 @@ public class Transaccion {
     public String toString() {
         String info = String.format("[%d] ID: %d | Tipo: %s |Monto: %.2f | Cuenta: %d", fechaHora, id, tipo, monto, numeroCuentaOrigen);
         if (numeroCuentaDestino != null) {
-            info += " | Cuenta Destino: %d" + numeroCuentaDestino;
+            info += String.format(" | Cuenta Destino: %d", numeroCuentaDestino);
         }
         return info;
     }
