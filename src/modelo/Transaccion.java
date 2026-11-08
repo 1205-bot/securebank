@@ -66,7 +66,7 @@ public class Transaccion {
 
     @Override
     public String toString() {
-        String info = String.format("[%d] ID: %d | Tipo: %s |Monto: %.2f | Cuenta: %d", fechaHora, id, tipo, monto, numeroCuentaOrigen);
+        String info = String.format("[%s] ID: %d | Tipo: %s | Monto: %.2f | Cuenta: %d", fechaHora, id, tipo, monto, numeroCuentaOrigen);
         if (numeroCuentaDestino != null) {
             info += String.format(" | Cuenta Destino: %d", numeroCuentaDestino);
         }
