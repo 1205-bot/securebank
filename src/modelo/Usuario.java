@@ -13,7 +13,7 @@ public class Usuario {
     // constructor de Usuario
     public Usuario(int id, Rol rol, String nombreUsuario, String contrasena) {
         // Validación de parámetros nulos
-        if (id <= 0 || rol == null || nombreUsuario == null || contrasena == null) {
+        if (id <= 0 || rol == null || nombreUsuario == null || nombreUsuario.isBlank() || contrasena == null) {
             throw new IllegalArgumentException("Los parámetros no pueden ser nulos");
         }
 
