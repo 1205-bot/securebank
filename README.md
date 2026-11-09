@@ -257,4 +257,4 @@ Notas:
 - `calcularSaldoDisponible()` está sobrescrito con `@Override` en ambas subclases (90% en ahorro, 100% en corriente).
 - Los getters restantes se omiten del diagrama por brevedad; todos los atributos son privados (`-`) y los métodos públicos (`+`); `$` marca miembro estático.
 
----
+--- 
