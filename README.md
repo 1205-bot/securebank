@@ -1,4 +1,4 @@
-# SecureBank - Proyecto Integrador (Segundo avance)
+# SecureBank - Proyecto Integrador (Tercer avance)
 
 **Facultad de Ingeniería - Programación Orientada a Objetos**
 
@@ -11,7 +11,7 @@
 |---|---|---|
 | Ramirez Olvera Erick Yael (@1205-bot) | Administrador del repositorio | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `Rol.java`, `Cuenta.java`, `TipoCuenta.java`, `Usuario.java`, `AutenticacionService.java`, `BancoService.java` |
 | Hernández Morales Hanzel Noel (@Hanher-2025) | Desarrollador | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `TipoTransaccion.java`, `AutenticacionService.java`, `BancoService.java` |
-| Santiago Carreto Héctor (@achesanticar) | Desarrollador y Corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `AutenticacionService.java`, `BancoService.java` |
+| Santiago Carreto Héctor (@achesanticar) | Desarrollador  | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `AutenticacionService.java`, `BancoService.java` |
 ---
 
 ## Versión de Java
@@ -29,7 +29,7 @@ securebank/
     ├── app/
     │   └── Main.java
     ├── excepciones/
-    │   └── SaldoInsuficiente.java
+    │   └── SaldoInsuficienteException.java
     ├── modelo/
     │   ├── Rol.java
     │   ├── TipoCuenta.java
@@ -40,8 +40,18 @@ securebank/
     │   ├── CuentaCorriente.java
     │   └── Transaccion.java
     └── servicio/
-        └── BancoService.java
+        ├── BancoService.java
+        └── AutenticacionService.java
 ```
+
+---
+
+## Versión entregada
+
+- **Repositorio:** https://github.com/1205-bot/securebank.git
+- **Commit de entrega:** 
+  (Merge pull request #21 from 1205-bot/feature/excepciones, rama `main`)
+- **Tag:** `entrega-tercer-avance`
 
 ---
 
@@ -64,7 +74,7 @@ Usuarios iniciales: `ana/1234` y `luis/abcd` (CLIENTE), `cajero1/caja` (CAJERO),
 4. Depositar, retirar y transferir con permisos (titular o cajero) y devolución del dinero si el destino rechaza una transferencia.
 5. Consultar saldo (muestra el polimorfismo), historial de transacciones.
 
-El sistema tiene cuatro clases de dominio/servicio (sin contar `Main`) y tres enumeraciones de apoyo.
+El sistema tiene ocho clases de dominio/servicio (sin contar `Main`) y tres enumeraciones de apoyo.
 
 ---
 
