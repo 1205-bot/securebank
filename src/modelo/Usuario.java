@@ -1,7 +1,7 @@
 package modelo;
 
 public class Usuario {
-    private static final int Max_Intentos = 3;
+    private static final int MAX_INTENTOS = 3;
 
     private final int id;
     private final Rol rol;
@@ -36,7 +36,7 @@ public class Usuario {
             return true;
         } else {
             this.intentosFallidos++;
-            if (this.intentosFallidos >= Max_Intentos) {
+            if (this.intentosFallidos >= MAX_INTENTOS) {
                 this.bloqueado = true; // Bloquear usuario después de 3 intentos fallidos
             }
             return false;
