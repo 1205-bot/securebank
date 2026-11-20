@@ -106,7 +106,7 @@ Sigue los pasos en orden dentro de una misma ejecución: se crean la cuenta 1 (a
 | P4 | 5 (cuenta 2, monto 0) | `IllegalArgumentException` («El monto debe ser mayor a cero»); saldo no cambia |
 | P5 | 4 (cuenta 2) → 6 (cuenta 2, 1000) → 4 (cuenta 2) | `SaldoInsuficienteException`; estado antes y después: saldo 500.00 |
 | P6 | 5 (cuenta 2, 100) tras el fallo | Depósito realizado, saldo 600.0; la sesión continúa |
-| P7 | 6 (cuenta 2, 50) y 6 (cuenta 2, 99999) | «Intento de retiro finalizado.» en ambos; «Retiro realizado» solo en el válido |
+| P7 | 6 (cuenta 2, 50) y 6 (cuenta 2, 99999) | «Intento de retiro finalizado.» en ambos; «Retiro realizado» solo en el válido | 
 
 ---
 
