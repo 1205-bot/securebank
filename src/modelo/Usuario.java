@@ -36,7 +36,7 @@ public class Usuario {
             return true;
         } else {
             this.intentosFallidos++;
-            if (this.intentosFallidos >= Max_Intentos) {
+            if (this.intentosFallidos >= MAX_INTENTOS) {
                 this.bloqueado = true; // Bloquear usuario después de 3 intentos fallidos
             }
             return false;
