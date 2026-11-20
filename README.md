@@ -1,3 +1,4 @@
+
 # SecureBank - Proyecto Integrador (Cuarto Avance - version final)
 
 **Facultad de Ingeniería - Programación Orientada a Objetos**
@@ -12,6 +13,7 @@
 | Ramirez Olvera Erick Yael (@1205-bot) | Administrador del repositorio | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `Rol.java`, `Cuenta.java`, `TipoCuenta.java`, `Usuario.java`, `AutenticacionService.java`, `BancoService.java`, integración y correcciones del cierre |
 | Hernández Morales Hanzel Noel (@Hanher-2025) | Desarrollador | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `TipoTransaccion.java`, `AutenticacionService.java`, `BancoService.java` |
 | Santiago Carreto Héctor (@achesanticar) | Desarrollador | Corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `AutenticacionService.java`, `BancoService.java` |
+
 ---
 
 ## Versión de Java
@@ -33,7 +35,7 @@ securebank/
     ├── app/
     │   └── Main.java
     ├── excepciones/
-    │   └── SaldoInsuficiente.java
+    │   └── SaldoInsuficienteException.java
     ├── modelo/
     │   ├── Rol.java
     │   ├── TipoCuenta.java
@@ -44,7 +46,8 @@ securebank/
     │   ├── CuentaCorriente.java
     │   └── Transaccion.java
     └── servicio/
-        └── BancoService.java
+        ├── BancoService.java
+        └── AutenticacionService.java
 ```
 
 ---
@@ -77,8 +80,6 @@ java "-Dstdout.encoding=UTF-8" -cp out app.Main
 5 Depositar        6 Retirar             7 Transferir     8 Consultar historial
 9 Consultar accesos                      0 Salir
 ```
-
-`0` sale del bucle y muestra «Sesion finalizada.»; una opción fuera de rango no cierra el programa. Los números de cuenta son secuenciales (1, 2, 3…) para que las pruebas sean reproducibles; el contador se reinicia en cada ejecución.
 
 ---
 
