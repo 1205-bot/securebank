@@ -1,7 +1,7 @@
 package modelo;
 
 public class Usuario {
-    private static final int Max_Intentos = 3;
+    private static final int MAX_INTENTOS = 3;
 
     private final int id;
     private final Rol rol;
