@@ -1,4 +1,6 @@
+
 # SecureBank - Proyecto Integrador (Cuarto Avance - version final)
+
 
 **Facultad de Ingeniería - Programación Orientada a Objetos**
 
@@ -12,6 +14,7 @@
 | Ramirez Olvera Erick Yael (@1205-bot) | Administrador del repositorio | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `Rol.java`, `Cuenta.java`, `TipoCuenta.java`, `Usuario.java`, `AutenticacionService.java`, `BancoService.java`, integración y correcciones del cierre |
 | Hernández Morales Hanzel Noel (@Hanher-2025) | Desarrollador | Desarrolló y corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `TipoTransaccion.java`, `AutenticacionService.java`, `BancoService.java` |
 | Santiago Carreto Héctor (@achesanticar) | Desarrollador | Corrigió: `CuentaAhorro.java`, `CuentaCorriente.java`, `RegistroAcceso.java`, `Transaccion.java`, `AutenticacionService.java`, `BancoService.java` |
+
 ---
 
 ## Versión de Java
@@ -33,7 +36,7 @@ securebank/
     ├── app/
     │   └── Main.java
     ├── excepciones/
-    │   └── SaldoInsuficiente.java
+    │   └── SaldoInsuficienteException.java
     ├── modelo/
     │   ├── Rol.java
     │   ├── TipoCuenta.java
@@ -44,7 +47,8 @@ securebank/
     │   ├── CuentaCorriente.java
     │   └── Transaccion.java
     └── servicio/
-        └── BancoService.java
+        ├── BancoService.java
+        └── AutenticacionService.java
 ```
 
 ---
@@ -100,6 +104,7 @@ Usuarios iniciales: `ana/1234` y `luis/abcd` (CLIENTE), `cajero1/caja` (CAJERO),
 - `calcularSaldoDisponible()` se **sobrescribe con `@Override`**: ahorro devuelve `saldo * 0.9`, corriente devuelve `saldo`.
 - En `Main.consultarSaldo` la referencia es del **tipo base** (`Cuenta cuenta = banco.buscarCuenta(numero)`) y la misma llamada produce resultados distintos (P1 y P2); se imprime `getClass().getSimpleName()` para que el efecto sea observable.
 - Constructores: `this` en la base para separar atributo de parámetro y `super(titular, saldo)` en las subclases. Atributos privados, expuestos con getters.
+
 ---
 
 ## Excepciones
