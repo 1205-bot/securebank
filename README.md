@@ -1,7 +1,6 @@
 
 # SecureBank - Proyecto Integrador (Cuarto Avance - version final)
 
-
 **Facultad de Ingeniería - Programación Orientada a Objetos**
 
 - **Proyecto:** SecureBank - sistema bancario con control de acceso por roles
@@ -60,8 +59,6 @@ javac -d out "src/excepciones/*.java" "src/modelo/*.java" "src/servicio/*.java" 
 java "-Dstdout.encoding=UTF-8" -cp out app.Main
 ```
 
-Usuarios iniciales: `ana/1234` y `luis/abcd` (CLIENTE), `cajero1/caja` (CAJERO), `auditor1/audit` (AUDITOR), `admin/root` (ADMINISTRADOR).
-
 ---
 
 ## Datos de ejemplo
@@ -83,8 +80,6 @@ Usuarios iniciales: `ana/1234` y `luis/abcd` (CLIENTE), `cajero1/caja` (CAJERO),
 5 Depositar        6 Retirar             7 Transferir     8 Consultar historial
 9 Consultar accesos                      0 Salir
 ```
-
-`0` sale del bucle y muestra «Sesion finalizada.»; una opción fuera de rango no cierra el programa. Los números de cuenta son secuenciales (1, 2, 3…) para que las pruebas sean reproducibles; el contador se reinicia en cada ejecución.
 
 ---
 
@@ -126,12 +121,12 @@ Usuarios iniciales: `ana/1234` y `luis/abcd` (CLIENTE), `cajero1/caja` (CAJERO),
 
 Cada caso parte de una ejecución nueva (`java ... app.Main`). En P1–P7 la cuenta que se crea es la número **1**; en P8 aparecen la 1 (ana) y la 2 (luis).
 
-| Caso | Situacion | Pasos | Resultado que se comprueba |
-|---|---|---|
-| P1 | Polimorfismo (ahorro) | ana/1234 → 3, tipo 1, saldo 1000 → 4, cuenta 1 | Cuenta 1 (CuentaAhorro) | saldo: 1000.00 | disponible: 900.00 |
-| P2 | Polimorfismo (corriente) | luis/abcd → 3, tipo 2, saldo 500 → 4, cuenta 1 | Cuenta 1 (CuentaCorriente) | saldo: 500.00 | disponible: 500.00 |
-| P3 | Formato incorrecto | ana → 3, tipo 1, 1000 → 5, cuenta 1, monto abc | «Formato incorrecto: la cuenta es un entero y el monto un número.» |
-| P4 | Dato que viola una regla | ana → 3, tipo 1, 1000 → 5, cuenta 1, monto -50 | «Operación rechazada: El monto debe ser mayor a cero» (IllegalArgumentException) |
+| Caso | Situación | Pasos | Resultado que se comprueba |
+|---|---|---|---|
+| P1 | Polimorfismo (ahorro) | ana/1234 → 3, tipo 1, saldo 1000 → 4, cuenta 1 | `Cuenta 1 (CuentaAhorro) \| saldo: 1000.00 \| disponible: 900.00` |
+| P2 | Polimorfismo (corriente) | luis/abcd → 3, tipo 2, saldo 500 → 4, cuenta 1 | `Cuenta 1 (CuentaCorriente) \| saldo: 500.00 \| disponible: 500.00` |
+| P3 | Formato incorrecto | ana → 3, tipo 1, 1000 → 5, cuenta 1, monto `abc` | «Formato incorrecto: la cuenta es un entero y el monto un número.» |
+| P4 | Dato que viola una regla | ana → 3, tipo 1, 1000 → 5, cuenta 1, monto `-50` | «Operación rechazada: El monto debe ser mayor a cero» (`IllegalArgumentException`) |
 | P5 | Excepción propia | luis → 3, tipo 2, 500 → 4 → 6, monto 1000 → 4 | Rechazo con «saldo disponible 500.00, monto solicitado 1000.00»; saldo 500.00 antes y después |
 | P6 | Acción válida tras el error | continuar P5 → 5, cuenta 1, monto 100 → 4 | «Deposito realizado. Nuevo saldo: 600.0»; el programa sigue operando |
 | P7 | finally en éxito y fallo | luis → 3, tipo 2, 500 → 6, monto 50 → 6, monto 99999 | «Intento de retiro finalizado.» en los dos intentos; «Retiro realizado» solo en el válido |
